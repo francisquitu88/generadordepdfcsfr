@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Propuesta de notificaciones e intranet</title>
+  <style>
+    :root {
+      --navy: #17324d;
+      --blue: #27678a;
+      --teal: #25847b;
+      --ink: #263746;
+      --muted: #5e6e7b;
+      --line: #dce5eb;
+      --pale: #f2f7fa;
+      --gold: #f2b544;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #edf2f5;
+      font: 15px/1.52 "Segoe UI", Arial, sans-serif;
+    }
+    main {
+      max-width: 920px;
+      margin: 28px auto;
+      padding: 48px 64px;
+      background: #fff;
+      box-shadow: 0 8px 32px rgba(23, 50, 77, .10);
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { color: var(--navy); line-height: 1.22; }
+    h1 { max-width: 720px; margin: 0; font-size: 34px; letter-spacing: -.025em; }
+    h2 { margin: 25px 0 9px; padding-bottom: 6px; border-bottom: 1px solid var(--line); font-size: 21px; }
+    h3 { margin: 15px 0 4px; font-size: 15px; }
+    p { margin: 6px 0 9px; }
+    .subtitle { max-width: 720px; margin: 10px 0 0; color: var(--muted); font-size: 16px; }
+    .rule { width: 48px; height: 3px; margin: 15px 0; background: var(--gold); }
+    .summary {
+      margin: 13px 0;
+      padding: 11px 14px;
+      border-left: 3px solid var(--teal);
+      background: var(--pale);
+    }
+    ul { margin: 5px 0 9px; padding-left: 19px; }
+    li { margin: 3px 0; }
+    .feature-list { margin: 8px 0 13px; padding: 0; list-style: none; }
+    .feature-list li { margin: 0; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .feature-list strong { color: var(--navy); }
+    .feature-list span { color: var(--muted); }
+    .page-two { break-before: page; page-break-before: always; }
+    .footer { margin-top: 17px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    @media (max-width: 700px) {
+      main { margin: 0; padding: 30px 22px; }
+      h1 { font-size: 29px; }
+    }
+    @media print {
+      @page { size: A4; margin: 14mm 16mm; }
+      body { background: #fff; font-size: 10pt; line-height: 1.38; }
+      main { max-width: none; margin: 0; padding: 0; box-shadow: none; }
+      h1 { font-size: 25pt; }
+      h2 { margin-top: 16px; font-size: 16pt; }
+      h3 { margin-top: 10px; font-size: 11pt; }
+      p { margin: 4px 0 6px; }
+      .subtitle { font-size: 12pt; }
+      .rule { margin: 10px 0; }
+      .summary { margin: 8px 0; padding: 8px 11px; }
+      li { margin: 2px 0; }
+      .page-two { break-before: page; page-break-before: always; }
+      .feature-list li { padding: 6px 0; break-inside: avoid; }
+      .footer { margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">Propuesta institucional</p>
+      <h1>Notificaciones por correo y mejoras a la intranet</h1>
+      <p class="subtitle">Dos líneas de trabajo para facilitar las comunicaciones y el acceso a herramientas y documentos del colegio.</p>
+      <div class="rule"></div>
+    </header>
+
+    <section>
+      <h2>1. Sistema de notificaciones por correo</h2>
+      <p>Se propone incorporar un sistema para preparar y enviar correos relacionados con campeonatos deportivos, actividades extraprogramáticas y otras instancias del colegio. El equipo autorizado podría administrar los destinatarios y mantener un registro de las comunicaciones enviadas.</p>
+
+      <h3>¿Qué permitiría hacer?</h3>
+      <ul class="feature-list">
+        <li><strong>Enviar avisos de actividades.</strong> <span>Crear y distribuir correos a los grupos de destinatarios correspondientes.</span></li>
+        <li><strong>Gestionar quién puede enviar.</strong> <span>Definir usuarios autorizados para preparar o enviar notificaciones.</span></li>
+        <li><strong>Indicar si una actividad tiene pago.</strong> <span>Configurar actividades con o sin cobro; cuando corresponda un pago, incluir automáticamente a Tesorería en la copia del correo.</span></li>
+        <li><strong>Consultar el historial.</strong> <span>Revisar qué notificaciones se enviaron y contar con una trazabilidad básica o ampliada, según las necesidades del colegio.</span></li>
+        <li><strong>Usar la imagen institucional.</strong> <span>Como opción, enviar desde un correo institucional y personalizar el diseño de los mensajes con la identidad del colegio.</span></li>
+      </ul>
+
+      <p>El alcance puede configurarse según el nivel de personalización y seguimiento que el colegio necesite. La opción más completa podría incluir automatizaciones adicionales, mejor administración de destinatarios y herramientas de seguimiento de notificaciones.</p>
+      <div class="summary"><strong>Resultado esperado:</strong> centralizar estos avisos, facilitar su envío a las personas correspondientes y disponer de un historial para consultar las comunicaciones.</div>
+    </section>
+
+    <section class="page-two">
+      <p class="eyebrow">Plataforma institucional</p>
+      <h1>Mejoras a la intranet del colegio</h1>
+      <p class="subtitle">Ampliar la intranet actual con documentos institucionales y una comunicación más completa entre docentes y administración.</p>
+      <div class="rule"></div>
+
+      <p>Se propone mejorar la intranet que actualmente está disponible en <strong>intranetcsfr.onrender.com</strong>. La idea es sumar herramientas de uso cotidiano y ofrecer un acceso más sencillo mediante el dominio institucional <strong>intranet.csfr.cl</strong>, sujeto a la configuración y aprobación correspondientes.</p>
+
+      <h2>Funciones propuestas</h2>
+      <ul class="feature-list">
+        <li><strong>Biblioteca de documentos institucionales.</strong> <span>Habilitar una sección para que personal autorizado pueda cargar y organizar documentos del colegio, y para que los usuarios autorizados puedan consultarlos.</span></li>
+        <li><strong>Seguimiento de tickets.</strong> <span>Permitir que un docente y administración continúen conversando dentro de un mismo ticket, agreguen información y consulten el historial sin perder el contexto de la solicitud.</span></li>
+        <li><strong>Acceso con dominio institucional.</strong> <span>Proponer el cambio del enlace actual a intranet.csfr.cl, para que la intranet sea más fácil de recordar y esté vinculada a la dirección del colegio.</span></li>
+      </ul>
+
+      <h3>Uso esperado de los tickets</h3>
+      <p>El docente crea una solicitud y administración puede responder en ese mismo espacio. Ambas partes pueden añadir mensajes y revisar la conversación previa, facilitando el seguimiento hasta resolver la solicitud.</p>
+
+      <h3>Administración de documentos</h3>
+      <p>La sección de documentos permitiría reunir archivos institucionales en un lugar común. Antes de habilitarla, se deben acordar quiénes podrán cargar, actualizar y consultar documentos, además de cómo se organizarán las versiones vigentes.</p>
+
+      <div class="summary"><strong>Resultado esperado:</strong> que la intranet no sea solo un punto de acceso, sino también un espacio para encontrar documentos institucionales y dar seguimiento claro a solicitudes internas.</div>
+
+      <footer class="footer">
+        <p>Las funcionalidades descritas son una propuesta de alcance para revisión del colegio. La disponibilidad del dominio intranet.csfr.cl depende de contar con acceso y realizar la configuración técnica correspondiente.</p>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Propuesta de interfaz · Asistente docente CSFR</title>
+  <style>
+    :root {
+      --navy: #142b4a;
+      --navy-2: #1e3b60;
+      --sidebar-red: #a51f35;
+      --blue: #245f99;
+      --sky: #e9f2fb;
+      --teal: #158474;
+      --ink: #25364a;
+      --muted: #718096;
+      --line: #e1e8ef;
+      --canvas: #f4f7fb;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #e9edf3;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+    .browser {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: #f9fafc;
+      border-bottom: 1px solid #d9dfe7;
+    }
+    .browser-dots { position: absolute; left: 24px; display: flex; gap: 7px; }
+    .browser-dots i { width: 10px; height: 10px; border-radius: 50%; background: #cbd3dd; }
+    .address {
+      min-width: 340px;
+      padding: 8px 18px;
+      border: 1px solid #e1e6ec;
+      border-radius: 20px;
+      background: #fff;
+      color: #59687a;
+      font-size: 13px;
+      text-align: center;
+      box-shadow: 0 1px 2px rgba(20,43,74,.04);
+    }
+    .secure { margin-right: 8px; color: var(--teal); }
+    .app {
+      width: min(1440px, 100%);
+      min-height: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 252px minmax(0, 1fr);
+      background: var(--canvas);
+      box-shadow: 0 12px 45px rgba(27, 46, 72, .12);
+    }
+    aside {
+      display: flex;
+      flex-direction: column;
+      padding: 23px 17px 18px;
+      background: var(--sidebar-red);
+      color: #dce6f2;
+    }
+    .brand {
+      display: flex;
+      min-height: 78px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 23px;
+      overflow: hidden;
+      border-radius: 9px;
+      background: transparent;
+    }
+    .brand img { display: block; width: 208px; height: 80px; object-fit: contain; }
+    .new-chat {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 13px;
+      border: 1px solid rgba(226, 237, 249, .2);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .plus { font-size: 22px; font-weight: 300; line-height: 14px; }
+    .side-label {
+      margin: 27px 10px 10px;
+      color: #f2c9d0;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .nav-item { padding: 10px 11px; border-radius: 7px; color: #dae4ef; font-size: 13px; }
+    .nav-item.active { background: rgba(255,255,255,.1); color: #fff; }
+    .recent { margin-top: 5px; padding: 9px 11px; color: #f6dfe3; font-size: 12px; line-height: 1.35; }
+    .side-bottom { margin-top: auto; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.13); }
+    .teacher {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 6px 3px;
+    }
+    .avatar {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #d9e9fb;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .teacher strong { display: block; color: #fff; font-size: 12px; }
+    .teacher small { color: #f0cbd2; font-size: 10px; }
+    .main { min-width: 0; }
+    .topbar {
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 34px;
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+    .crumb { color: var(--muted); font-size: 12px; }
+    .crumb strong { color: #394b60; font-weight: 600; }
+    .top-right { display: flex; align-items: center; gap: 13px; }
+    .status { display: flex; align-items: center; gap: 7px; color: #5b6b7d; font-size: 11px; }
+    .status i { width: 7px; height: 7px; border-radius: 50%; background: #29a37e; }
+    .help { width: 26px; height: 26px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: #66788a; font-size: 12px; }
+    .content { max-width: 1080px; margin: 0 auto; padding: 48px 48px 38px; }
+    .welcome { display: flex; align-items: flex-start; justify-content: space-between; gap: 22px; }
+    .kicker { margin: 0 0 8px; color: var(--teal); font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; color: var(--navy); font-size: 31px; font-weight: 650; letter-spacing: -.03em; }
+    .intro { margin: 9px 0 0; color: var(--muted); font-size: 14px; }
+    .profile-pill {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 13px;
+      padding: 9px 12px;
+      border: 1px solid #dce6f0;
+      border-radius: 8px;
+      background: #fff;
+      color: #40536a;
+      font-size: 11px;
+    }
+    .profile-pill b { color: var(--blue); }
+    .profile-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+    .mode-tabs {
+      display: flex;
+      gap: 5px;
+      width: fit-content;
+      margin: 27px 0 18px;
+      padding: 4px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      background: #edf1f6;
+    }
+    .mode {
+      padding: 9px 15px;
+      border-radius: 6px;
+      color: #64758a;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .mode.selected { background: #fff; color: var(--navy); box-shadow: 0 1px 4px rgba(24,44,70,.11); }
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 250px;
+      gap: 17px;
+      align-items: start;
+    }
+    .chat-card, .details-card, .composer, .tool {
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(23, 50, 77, .035);
+    }
+    .chat-card { min-height: 690px; display: flex; flex-direction: column; padding: 22px; }
+    .chat-head { display: flex; align-items: center; gap: 11px; padding-bottom: 15px; border-bottom: 1px solid #edf1f4; }
+    .bot-icon { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 11px; background: #e8f3f1; color: var(--teal); font-size: 17px; }
+    .chat-head strong { display: block; color: var(--navy); font-size: 12px; }
+    .chat-head small { color: #8491a0; font-size: 10px; }
+    .hello { display: flex; gap: 10px; max-width: 570px; margin: 20px 0 18px; }
+    .hello .bot-icon { flex: 0 0 32px; width: 32px; height: 32px; }
+    .bubble { padding: 12px 14px; border: 1px solid #e9eef3; border-radius: 3px 12px 12px; background: #f8fafc; color: #405267; font-size: 12px; line-height: 1.55; }
+    .bubble strong { color: var(--navy); }
+    .example-label { margin: 15px 0 9px; color: #8190a0; font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .user-message { max-width: 80%; margin: 0 0 13px auto; padding: 10px 13px; border-radius: 11px 3px 11px 11px; background: #eaf2fb; color: #334d69; font-size: 11px; line-height: 1.45; }
+    .answer { display: flex; gap: 9px; margin: 0 0 10px; }
+    .answer .bot-icon { flex: 0 0 30px; width: 30px; height: 30px; }
+    .answer-body { min-width: 0; }
+    .answer-copy { padding: 10px 12px; border: 1px solid #e9eef3; border-radius: 3px 11px 11px; background: #f8fafc; color: #405267; font-size: 10px; line-height: 1.48; }
+    .source-card { margin-top: 7px; padding: 8px 10px; border: 1px solid #dce9e6; border-radius: 7px; background: #f2f8f6; color: #4d6970; font-size: 9px; line-height: 1.4; }
+    .source-card strong { display: block; margin-bottom: 2px; color: #286d64; font-size: 9px; }
+    .source-card a { color: #286d64; text-decoration: underline; }
+    .suggestion-title { margin: 3px 0 10px 42px; color: #8190a0; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+    .tools { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-left: 42px; }
+    .tool { display: flex; gap: 9px; align-items: center; padding: 10px; box-shadow: none; }
+    .tool-icon { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 8px; background: #eff5fb; color: var(--blue); font-size: 14px; }
+    .tool strong { display: block; color: #344960; font-size: 10px; }
+    .tool small { color: #8794a3; font-size: 9px; }
+    .spacer { flex: 1; min-height: 24px; }
+    .composer { padding: 12px 13px 10px; border-color: #d5dfe9; box-shadow: 0 6px 20px rgba(23,50,77,.06); }
+    .composer-text { padding: 4px 3px 13px; color: #99a5b2; font-size: 12px; }
+    .composer-foot { display: flex; justify-content: space-between; align-items: center; }
+    .context-chip { padding: 6px 9px; border: 1px solid #e5eaf0; border-radius: 6px; color: #64768a; font-size: 9px; }
+    .send { width: 29px; height: 29px; display: grid; place-items: center; border-radius: 7px; background: var(--blue); color: #fff; font-size: 15px; }
+    .privacy { margin: 8px 0 0; color: #9aa5b1; font-size: 9px; text-align: center; }
+    .details-card { padding: 17px; }
+    .details-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; color: var(--navy); font-size: 12px; font-weight: 700; }
+    .edit { color: var(--blue); font-size: 10px; font-weight: 600; }
+    .field-label { display: block; margin: 11px 0 5px; color: #7c8997; font-size: 9px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+    .field {
+      padding: 9px 10px;
+      border: 1px solid #e5eaf0;
+      border-radius: 6px;
+      color: #405268;
+      font-size: 10px;
+    }
+    .field.placeholder { color: #a2adba; }
+    .profile-note { margin: 13px 0 0; padding: 10px; border-radius: 7px; background: #f2f7fb; color: #738296; font-size: 9px; line-height: 1.45; }
+    .bottom-row { display: flex; justify-content: space-between; margin-top: 19px; color: #8a98a8; font-size: 9px; }
+    @media (max-width: 900px) {
+      .app { grid-template-columns: 210px minmax(0,1fr); }
+      .content { padding: 32px 24px; }
+      .workspace { grid-template-columns: 1fr; }
+      .details-card { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="browser">
+    <div class="browser-dots"><i></i><i></i><i></i></div>
+    <div class="address"><span class="secure">●</span> https://ia.csfr.cl</div>
+  </div>
+  <div class="app">
+    <aside>
+      <div class="brand"><img src="logo-colegio-transparente.png" alt="Colegio Sagrada Familia · Reñaca"></div>
+      <div class="new-chat"><span class="plus">＋</span> Nueva conversación</div>
+      <div class="side-label">Espacio docente</div>
+      <div class="nav-item active">✦ &nbsp; Asistente IA</div>
+      <div class="nav-item">▤ &nbsp; Mis trabajos</div>
+      <div class="nav-item">▣ &nbsp; Mis plantillas</div>
+      <div class="side-label">Recientes</div>
+      <div class="recent">Planificación · Historia 5.º básico</div>
+      <div class="recent">Guía de actividades · Matemática</div>
+      <div class="side-bottom">
+        <div class="teacher">
+          <div class="avatar">MF</div>
+          <div><strong>María Fernández</strong><small>Perfil docente</small></div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <div class="topbar">
+        <div class="crumb">Espacio docente &nbsp;›&nbsp; <strong>Nueva conversación</strong></div>
+        <div class="top-right"><div class="status"><i></i> Asistente disponible</div><div class="help">?</div></div>
+      </div>
+
+      <div class="content">
+        <div class="welcome">
+          <div>
+            <p class="kicker">Tu espacio de trabajo</p>
+            <h1>¿Qué necesitas preparar hoy?</h1>
+            <p class="intro">Planifica, crea recursos o conversa con el asistente.</p>
+          </div>
+          <div class="profile-pill"><i class="profile-dot"></i><span>Perfil activo: <b>5.º Básico · Historia</b></span></div>
+        </div>
+
+        <div class="mode-tabs">
+          <div class="mode selected">Planificar con mi perfil</div>
+          <div class="mode">Chat general</div>
+        </div>
+
+        <div class="workspace">
+          <section class="chat-card">
+            <div class="chat-head">
+              <div class="bot-icon">✦</div>
+              <div><strong>Asistente docente CSFR</strong><small>Preparación de clases y materiales</small></div>
+            </div>
+            <div class="hello">
+              <div class="bot-icon">✦</div>
+              <div class="bubble"><strong>¡Hola, María!</strong> Ya tengo tu curso y asignatura habituales. Cuéntame qué quieres preparar y agregaré solo los datos que falten.</div>
+            </div>
+            <div class="suggestion-title">Puedes empezar por</div>
+            <div class="tools">
+              <div class="tool"><div class="tool-icon">▤</div><div><strong>Planificar una clase</strong><small>Actividades y estructura</small></div></div>
+              <div class="tool"><div class="tool-icon">▧</div><div><strong>Crear una guía</strong><small>Material para tus estudiantes</small></div></div>
+              <div class="tool"><div class="tool-icon">✓</div><div><strong>Diseñar una evaluación</strong><small>Preguntas, pauta o rúbrica</small></div></div>
+              <div class="tool"><div class="tool-icon">↗</div><div><strong>Adaptar una actividad</strong><small>Apoyos y niveles de dificultad</small></div></div>
+            </div>
+            <div class="example-label">Ejemplo · consulta curricular</div>
+            <div class="user-message">¿Qué objetivo de aprendizaje de MINEDUC aborda los riesgos naturales en 5.º básico? ¿Me lo explicas y me indicas la fuente?</div>
+            <div class="answer">
+              <div class="bot-icon">✦</div>
+              <div class="answer-body">
+                <div class="answer-copy">En 5.º básico, el objetivo de Historia, Geografía y Ciencias Sociales sobre riesgos naturales propone investigar, describir y ubicar amenazas de la localidad —como sismos, maremotos, inundaciones, derrumbes y volcanismo— e identificar formas de protección para la comunidad.<br><br>En otras palabras, combina reconocer los riesgos del entorno con pensar cómo prepararse. <strong>Una actividad posible:</strong> identificar un riesgo que podría afectar a la comunidad escolar y elaborar medidas de prevención y evacuación. Esta actividad es una sugerencia didáctica basada en el objetivo, no una cita textual del documento.</div>
+                <div class="source-card"><strong>Fuente consultada · MINEDUC</strong><a href="https://www.curriculumnacional.cl/curriculum/1o-6o-basico/historia-geografia-ciencias-sociales/5-basico">Currículum Nacional · Historia, Geografía y Ciencias Sociales · 5.º básico</a><br>Objetivo de aprendizaje: Riesgos naturales</div>
+              </div>
+            </div>
+            <div class="spacer"></div>
+            <div class="composer">
+              <div class="composer-text">Escribe otra consulta o pide una planificación...</div>
+              <div class="composer-foot"><span class="context-chip">5.º Básico · Historia &nbsp;⌄</span><span class="send">↑</span></div>
+            </div>
+            <p class="privacy">El asistente propone; tú revisas y decides qué utilizar.</p>
+          </section>
+
+          <aside class="details-card">
+            <div class="details-title"><span>Datos de esta solicitud</span><span class="edit">Editar perfil</span></div>
+            <span class="field-label">Curso</span>
+            <div class="field">5.º Básico &nbsp;⌄</div>
+            <span class="field-label">Asignatura</span>
+            <div class="field">Historia, Geografía y Cs. Sociales &nbsp;⌄</div>
+            <span class="field-label">Unidad</span>
+            <div class="field placeholder">Escribe o selecciona una unidad</div>
+            <span class="field-label">Objetivo de aprendizaje</span>
+            <div class="field placeholder">Agrega el OA que quieres trabajar</div>
+            <span class="field-label">Duración</span>
+            <div class="field placeholder">Ej.: 90 minutos</div>
+            <div class="profile-note">Curso y asignatura se guardan en tu perfil. Completa los datos específicos para cada nuevo material.</div>
+          </aside>
+        </div>
+        <div class="bottom-row"><span>Los materiales generados deben ser revisados por el docente.</span><span>Ayuda &nbsp; · &nbsp; Privacidad</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

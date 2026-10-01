@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diagnóstico docente y propuesta de chatbot</title>
+  <style>
+    :root {
+      --navy: #17324d;
+      --blue: #27678a;
+      --teal: #25847b;
+      --ink: #263746;
+      --muted: #5e6e7b;
+      --line: #dce5eb;
+      --pale: #f2f7fa;
+      --gold: #f2b544;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #edf2f5;
+      font: 15px/1.52 "Segoe UI", Arial, sans-serif;
+    }
+    main {
+      max-width: 920px;
+      margin: 28px auto;
+      padding: 48px 64px;
+      background: #fff;
+      box-shadow: 0 8px 32px rgba(23, 50, 77, .10);
+    }
+    .header-layout { display: grid; grid-template-columns: minmax(0, 1fr) 150px; align-items: center; gap: 22px; }
+    .brand-logo { display: block; width: 150px; height: 150px; margin: 0; object-fit: contain; }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { color: var(--navy); line-height: 1.22; }
+    h1 { max-width: 690px; margin: 0; font-size: 34px; letter-spacing: -.025em; }
+    h2 { margin: 25px 0 9px; padding-bottom: 6px; border-bottom: 1px solid var(--line); font-size: 21px; }
+    h3 { margin: 15px 0 4px; font-size: 15px; }
+    p { margin: 6px 0 9px; }
+    .subtitle { max-width: 690px; margin: 10px 0 0; color: var(--muted); font-size: 16px; }
+    .rule { width: 48px; height: 3px; margin: 15px 0; background: var(--gold); }
+    .meta { color: var(--muted); font-size: 11px; }
+    .summary {
+      margin: 13px 0;
+      padding: 11px 14px;
+      border-left: 3px solid var(--teal);
+      background: var(--pale);
+    }
+    ul { margin: 5px 0 9px; padding-left: 19px; }
+    li { margin: 3px 0; }
+    .keyline { color: var(--blue); font-weight: 700; }
+    .proposal { break-before: page; page-break-before: always; }
+    .feature-list { margin: 8px 0 13px; padding: 0; list-style: none; }
+    .feature-list li { margin: 0; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .feature-list strong { color: var(--navy); }
+    .feature-list span { color: var(--muted); }
+    .visual-link {
+      display: inline-block;
+      margin: 2px 0 12px;
+      padding: 9px 14px;
+      border-radius: 6px;
+      background: var(--blue);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .visual-link:hover { background: var(--navy); }
+    .mockup-page { break-before: page; page-break-before: always; }
+    .mockup-image { display: block; width: 100%; height: auto; margin: 18px auto 10px; border: 1px solid var(--line); border-radius: 8px; }
+    .mockup-caption { color: var(--muted); font-size: 12px; text-align: center; }
+    .footer { margin-top: 17px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    @media (max-width: 700px) {
+      main { margin: 0; padding: 30px 22px; }
+      h1 { font-size: 29px; }
+      .header-layout { grid-template-columns: 1fr; gap: 8px; }
+      .brand-logo { justify-self: end; width: 82px; height: 82px; }
+    }
+    @media print {
+      @page { size: A4; margin: 14mm 16mm; }
+      body { background: #fff; font-size: 10pt; line-height: 1.38; }
+      main { max-width: none; margin: 0; padding: 0; box-shadow: none; }
+      .header-layout { grid-template-columns: minmax(0, 1fr) 140px; gap: 18px; }
+      .brand-logo { width: 140px; height: 140px; }
+      h1 { font-size: 25pt; }
+      h2 { margin-top: 16px; font-size: 16pt; }
+      h3 { margin-top: 10px; font-size: 11pt; }
+      p { margin: 4px 0 6px; }
+      .subtitle { font-size: 12pt; }
+      .rule { margin: 10px 0; }
+      .summary { margin: 8px 0; padding: 8px 11px; }
+      li { margin: 2px 0; }
+      .proposal { break-before: page; page-break-before: always; }
+      .mockup-page { break-before: page; page-break-before: always; }
+      .mockup-image { max-height: 165mm; object-fit: contain; margin-top: 14px; }
+      .mockup-caption { font-size: 9pt; }
+      .feature-list li { padding: 6px 0; break-inside: avoid; }
+      .footer { margin-top: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="header-layout">
+        <div>
+          <p class="eyebrow">Propuesta institucional</p>
+          <h1>IA para docentes</h1>
+          <p class="subtitle">Resultados de la encuesta y propuesta de chatbot.</p>
+          <p class="meta">Elaborado por Francisco Sotomayor · CTO de Tourify.cl</p>
+          <div class="rule"></div>
+          <p class="meta">Encuesta: 30 respuestas · 23 de septiembre al 1 de octubre de 2026</p>
+        </div>
+        <img class="brand-logo" src="logo-institucional.jpg" alt="Logo institucional">
+      </div>
+    </header>
+
+    <section>
+      <h2>Hallazgos principales</h2>
+      <p>La inteligencia artificial ya forma parte del trabajo de quienes respondieron: <span class="keyline">29 de 30</span> señalaron que utilizan al menos una herramienta. La necesidad expresada no es solo acceder a un chatbot, sino obtener apoyo práctico que considere el curso, los objetivos de aprendizaje y los criterios del colegio.</p>
+
+      <h3>Preparar clases y recursos concentra la demanda</h3>
+      <p>La búsqueda de recursos (57%), las evaluaciones (53%) y la planificación de clases (47%) están entre las tareas que más tiempo consumen. Cuando se pregunta por una primera función para la plataforma, destaca un planificador de clases (77%); luego aparecen rúbricas (43%), banco de actividades (40%), evaluaciones y adaptación de actividades (37% cada una).</p>
+
+      <h3>El contenido debe ser pertinente y revisable</h3>
+      <p>Las fuentes esperadas incluyen currículum MINEDUC (87%), programas de estudio (70%) y formato institucional (63%). En una evaluación generada, las 30 personas consideran indispensable la alineación con objetivos de aprendizaje. Además, 23 docentes (77%) necesitan diversificar actividades al menos varias veces por semana; solicitan especialmente distintos niveles de dificultad (83%) y apoyos visuales (80%).</p>
+
+      <p>La dificultad más mencionada al usar IA es confiar en la exactitud de las respuestas (9 personas; 30%).</p>
+
+      <h3>Debe encajar en la forma de trabajo docente</h3>
+      <ul>
+        <li>El 60% prefiere combinar conversación con pasos guiados, en lugar de usar únicamente un chat libre.</li>
+        <li>Las 30 personas valoran guardar plantillas o configuraciones; 28 califican con la máxima importancia poder guardar y retomar trabajos.</li>
+        <li>Word es el formato más solicitado (97%), seguido de PDF (63%).</li>
+        <li>25 personas (83%) probarían un piloto; otras 4 (13%) respondieron “Quizás”.</li>
+      </ul>
+
+      <div class="summary"><strong>Lectura:</strong> la oportunidad es apoyar la preparación de clases con una herramienta sencilla, contextualizada y editable. La encuesta orienta la propuesta, pero no demuestra por sí sola ahorro de tiempo, adopción futura ni mejora de resultados pedagógicos.</div>
+    </section>
+
+    <section class="proposal">
+      <p class="eyebrow">La plataforma</p>
+      <h1>Un espacio de apoyo para el trabajo docente</h1>
+      <p class="subtitle">Un asistente sencillo que reúne planificación, creación de materiales y consultas en un mismo lugar.</p>
+      <div class="rule"></div>
+
+      <p>Al entrar, cada docente puede elegir un perfil guardado con su curso y asignatura habituales, para no volver a escribir esos datos en cada conversación. Para una planificación concreta, agrega la unidad, el objetivo de aprendizaje, la duración y el contexto que quiera considerar. También puede iniciar un chat general para consultas que no requieran ese perfil.</p>
+
+      <h2>Herramientas para preparar y adaptar clases</h2>
+      <ul class="feature-list">
+        <li><strong>Planificar clases.</strong> <span>Proponer una estructura de clase con actividades, tiempos y recursos según los datos entregados.</span></li>
+        <li><strong>Crear materiales.</strong> <span>Preparar guías, evaluaciones, preguntas y rúbricas relacionadas con una clase u objetivo.</span></li>
+        <li><strong>Adaptar actividades.</strong> <span>Ofrecer alternativas de dificultad y apoyos que el docente puede seleccionar y revisar.</span></li>
+        <li><strong>Guardar y reutilizar.</strong> <span>Conservar trabajos y perfiles para retomarlos o usarlos como punto de partida.</span></li>
+        <li><strong>Descargar.</strong> <span>Exportar los materiales en formatos de uso habitual, comenzando por Word y PDF.</span></li>
+      </ul>
+      <a class="visual-link" href="#propuesta-visual">Ver la propuesta visual del asistente ↓</a>
+      <p>El docente puede pedir cambios antes de guardar o descargar. La plataforma puede utilizar currículum y documentos institucionales que el colegio haya entregado y validado; el contenido generado queda siempre disponible para revisión del docente.</p>
+
+      <h2>Acceso y resguardo</h2>
+      <p>El acceso propuesto es <strong>ia.csfr.cl</strong>, un subdominio de csfr.cl: no requiere comprar otro dominio ni pagar un registro adicional. La herramienta debe priorizar materiales y contexto pedagógico, evitando ingresar datos personales identificables de estudiantes.</p>
+
+      <footer class="footer">
+        <p>Fuente: cuestionario “Diagnóstico Institucional – Uso y necesidades de Inteligencia Artificial Docente” (30 respuestas). Los porcentajes de selección múltiple se calculan sobre 30 y pueden sumar más de 100%. Resultados descriptivos; no implican causalidad ni representatividad de toda la comunidad escolar.</p>
+      </footer>
+    </section>
+
+    <section id="propuesta-visual" class="mockup-page">
+      <p class="eyebrow">Propuesta visual</p>
+      <h1>Así podría verse el asistente</h1>
+      <p class="subtitle">Una referencia visual de la experiencia docente en ia.csfr.cl.</p>
+      <img class="mockup-image" src="Propuesta visual chatbot ia.csfr.cl.png" alt="Interfaz propuesta para el asistente docente, con navegación roja, logo del colegio y perfil de curso">
+      <p class="mockup-caption">Ejemplo ilustrativo: una consulta sobre un objetivo de aprendizaje y una respuesta que identifica la fuente curricular de MINEDUC. Maqueta conceptual; no corresponde a una plataforma ya implementada.</p>
+    </section>
+  </main>
+</body>
+</html>
