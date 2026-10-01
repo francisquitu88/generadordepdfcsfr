@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interfaz propuesta | Notificaciones CSFR</title>
+  <style>
+    :root {
+      --red: #a51f3a;
+      --red-dark: #86182f;
+      --navy: #17324d;
+      --blue: #286b91;
+      --teal: #25847b;
+      --ink: #263746;
+      --muted: #74818c;
+      --line: #dfe6eb;
+      --paper: #ffffff;
+      --workspace: #f1f5f8;
+      --soft-red: #fbf0f2;
+      --soft-teal: #e9f4f1;
+      --gold: #e5b74c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      width: 1440px;
+      height: 960px;
+      overflow: hidden;
+      color: var(--ink);
+      background: #e9eef2;
+      font: 14px/1.4 "Segoe UI", sans-serif;
+    }
+    .browser {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: #fff;
+      border-bottom: 1px solid #e3e8ec;
+    }
+    .dots { position: absolute; left: 18px; display: flex; gap: 6px; }
+    .dots i { width: 7px; height: 7px; border-radius: 50%; background: #ccd4da; }
+    .address {
+      width: 340px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid #e2e7eb;
+      border-radius: 15px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .secure { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+    .app { height: 918px; display: grid; grid-template-columns: 228px 1fr; margin: 0 36px; box-shadow: 0 12px 28px rgba(27, 47, 65, .13); }
+    aside {
+      padding: 22px 17px;
+      color: #fff;
+      background: var(--red);
+      display: flex;
+      flex-direction: column;
+    }
+    .brand { height: 105px; display: flex; align-items: flex-start; padding: 0 4px 17px; border-bottom: 1px solid rgba(255,255,255,.22); }
+    .brand img { width: 183px; height: 76px; object-fit: contain; object-position: left center; }
+    .primary {
+      margin: 18px 0 25px;
+      padding: 11px 13px;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.36);
+      border-radius: 7px;
+      font-weight: 600;
+      background: rgba(255,255,255,.06);
+    }
+    .nav-label { margin: 0 0 8px 4px; color: #f4cdd5; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+    nav { display: grid; gap: 5px; }
+    .nav-item { min-height: 36px; padding: 9px 11px; border-radius: 6px; color: #fff; font-size: 13px; }
+    .nav-item.active { background: rgba(255,255,255,.17); font-weight: 600; }
+    .nav-icon { display: inline-block; width: 21px; color: #f4d3d9; font-weight: 700; }
+    .side-foot { margin-top: auto; padding-top: 15px; border-top: 1px solid rgba(255,255,255,.24); display: flex; align-items: center; gap: 10px; font-size: 12px; }
+    .avatar { width: 32px; height: 32px; display: grid; place-items: center; flex: none; border-radius: 50%; color: var(--red-dark); background: #fff; font-weight: 700; }
+    .side-foot small { display: block; color: #f3cdd4; font-size: 10px; }
+    .content { min-width: 0; background: var(--workspace); }
+    .topbar { height: 55px; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; background: #fff; border-bottom: 1px solid var(--line); font-size: 12px; }
+    .crumb strong { color: var(--navy); }
+    .right-top { display: flex; align-items: center; gap: 20px; color: var(--muted); }
+    .online { color: var(--teal); font-size: 11px; }
+    main { padding: 27px 34px 23px; }
+    .eyebrow { margin: 0 0 6px; color: var(--teal); font-size: 10px; font-weight: 700; letter-spacing: 1.1px; text-transform: uppercase; }
+    h1 { margin: 0; color: var(--navy); font-size: 27px; line-height: 1.2; }
+    .subtitle { margin: 7px 0 20px; color: var(--muted); font-size: 13px; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; margin-bottom: 16px; }
+    .stat { min-height: 76px; display: flex; align-items: center; gap: 12px; padding: 13px 16px; background: var(--paper); border: 1px solid var(--line); border-radius: 7px; }
+    .stat-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 7px; color: var(--blue); background: #edf5f8; font-size: 17px; font-weight: 700; }
+    .stat:nth-child(2) .stat-icon { color: #927128; background: #fbf5e8; }
+    .stat:nth-child(3) .stat-icon { color: var(--teal); background: var(--soft-teal); }
+    .stat strong { display: block; color: var(--navy); font-size: 20px; line-height: 1.1; }
+    .stat span { color: var(--muted); font-size: 11px; }
+    .workgrid { display: grid; grid-template-columns: minmax(0, 1.32fr) minmax(310px, .88fr); gap: 15px; align-items: stretch; }
+    .panel { background: var(--paper); border: 1px solid var(--line); border-radius: 7px; box-shadow: 0 2px 6px rgba(23,50,77,.035); }
+    .compose { padding: 17px 19px; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    h2 { margin: 0; color: var(--navy); font-size: 16px; }
+    .draft { padding: 4px 8px; border-radius: 4px; color: #8a6b26; background: #fbf5e7; font-size: 10px; font-weight: 600; }
+    .field { margin-top: 11px; }
+    label { display: block; margin-bottom: 5px; color: #526270; font-size: 10px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; }
+    input, .select, .textarea { width: 100%; min-height: 35px; padding: 9px 10px; color: var(--ink); background: #fff; border: 1px solid #dce4e9; border-radius: 5px; font: inherit; font-size: 12px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+    .select { display: flex; align-items: center; justify-content: space-between; color: #435666; }
+    .textarea { height: 78px; color: #667682; line-height: 1.5; }
+    .checks { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 12px; padding: 10px 11px; border: 1px solid #e8ecef; border-radius: 5px; }
+    .check-left { display: flex; align-items: center; gap: 9px; }
+    .checkbox { width: 16px; height: 16px; display: grid; place-items: center; border-radius: 4px; color: #fff; background: var(--teal); font-size: 11px; }
+    .check-left strong { display: block; color: var(--navy); font-size: 11px; }
+    .check-left small { display: block; color: var(--muted); font-size: 10px; }
+    .cc { color: var(--teal); font-size: 10px; font-weight: 600; white-space: nowrap; }
+    .actions { display: flex; align-items: center; justify-content: space-between; margin-top: 13px; }
+    .quiet { color: var(--muted); font-size: 11px; }
+    .buttons { display: flex; gap: 8px; }
+    button { height: 34px; padding: 0 12px; border: 1px solid var(--line); border-radius: 5px; color: #536473; background: #fff; font: inherit; font-size: 11px; font-weight: 600; }
+    button.send { color: #fff; background: var(--red); border-color: var(--red); }
+    .preview { padding: 17px 17px 14px; }
+    .preview-label { margin: 14px 0 5px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .45px; text-transform: uppercase; }
+    .subject { color: var(--navy); font-size: 13px; font-weight: 700; }
+    .recipient-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+    .tag { padding: 4px 7px; border: 1px solid #d8e5ea; border-radius: 4px; color: #426175; background: #f4f8fa; font-size: 10px; }
+    .mail { margin-top: 10px; padding: 14px; border: 1px solid var(--line); border-radius: 5px; background: #fcfdfe; }
+    .mail-brand { display: flex; align-items: center; gap: 8px; padding-bottom: 9px; border-bottom: 2px solid var(--red); }
+    .mail-mark { width: 25px; height: 25px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--red); font-size: 11px; font-weight: 700; }
+    .mail-brand strong { color: var(--navy); font-size: 11px; }
+    .mail-brand small { display: block; color: var(--muted); font-size: 9px; }
+    .mail h3 { margin: 11px 0 5px; color: var(--navy); font-size: 14px; }
+    .mail p { margin: 5px 0; color: #61717e; font-size: 10px; line-height: 1.5; }
+    .event-info { margin-top: 9px; padding: 8px 9px; border-left: 2px solid var(--gold); color: #566978; background: #f8f7f2; font-size: 10px; line-height: 1.6; }
+    .sender { margin-top: 10px; color: var(--muted); font-size: 9px; }
+    .recent { margin-top: 15px; padding: 13px 17px 6px; }
+    .recent-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .recent-head a { color: var(--blue); font-size: 10px; text-decoration: none; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th { padding: 7px 6px; color: #84919a; border-bottom: 1px solid var(--line); font-size: 9px; font-weight: 700; text-transform: uppercase; }
+    td { padding: 8px 6px; color: #536473; border-bottom: 1px solid #edf0f2; font-size: 10px; }
+    td strong { color: var(--navy); font-weight: 600; }
+    .status { padding: 3px 6px; border-radius: 9px; color: #287468; background: var(--soft-teal); font-size: 9px; }
+    .footer { display: flex; justify-content: space-between; margin-top: 12px; color: #86929b; font-size: 9px; }
+  </style>
+</head>
+<body>
+  <div class="browser">
+    <div class="dots"><i></i><i></i><i></i></div>
+    <div class="address"><span class="secure"></span>https://notificaciones.csfr.cl</div>
+  </div>
+  <div class="app">
+    <aside>
+      <div class="brand"><img src="logo-colegio-transparente.png" alt="Sagrada Familia, colegio Reñaca" /></div>
+      <div class="primary">＋ &nbsp; Nueva notificación</div>
+      <p class="nav-label">Comunicaciones</p>
+      <nav>
+        <div class="nav-item active"><span class="nav-icon">▦</span>Panel principal</div>
+        <div class="nav-item"><span class="nav-icon">✉</span>Crear aviso</div>
+        <div class="nav-item"><span class="nav-icon">◷</span>Historial de envíos</div>
+      </nav>
+      <p class="nav-label" style="margin-top:25px">Administración</p>
+      <nav>
+        <div class="nav-item"><span class="nav-icon">◎</span>Destinatarios</div>
+        <div class="nav-item"><span class="nav-icon">♧</span>Usuarios autorizados</div>
+        <div class="nav-item"><span class="nav-icon">⚙</span>Configuración</div>
+      </nav>
+      <div class="side-foot"><div class="avatar">MA</div><div>Mauricio Arias<small>Administración y Finanzas</small></div></div>
+    </aside>
+    <div class="content">
+      <div class="topbar">
+        <div class="crumb">Comunicaciones &nbsp;›&nbsp; <strong>Panel principal</strong></div>
+        <div class="right-top"><span class="online">● Sistema disponible</span><span>Ayuda &nbsp; ?</span><div class="avatar" style="width:28px;height:28px;background:#eef3f6;color:#35566c">MA</div></div>
+      </div>
+      <main>
+        <p class="eyebrow">Sistema de notificaciones CSFR</p>
+        <h1>Comunicaciones del colegio</h1>
+        <p class="subtitle">Prepara avisos, revisa destinatarios y consulta el historial de envíos.</p>
+        <div class="stats">
+          <div class="stat"><div class="stat-icon">✉</div><div><strong>08</strong><span>Envíos este mes</span></div></div>
+          <div class="stat"><div class="stat-icon">◷</div><div><strong>02</strong><span>Borradores por revisar</span></div></div>
+          <div class="stat"><div class="stat-icon">◎</div><div><strong>06</strong><span>Grupos de destinatarios</span></div></div>
+        </div>
+        <div class="workgrid">
+          <section class="panel compose">
+            <div class="panel-head"><h2>Nueva notificación</h2><span class="draft">BORRADOR</span></div>
+            <div class="row">
+              <div class="field"><label>Tipo de actividad</label><div class="select">Actividad extraprogramática <span>⌄</span></div></div>
+              <div class="field"><label>Fecha de la actividad</label><input value="Viernes 24 de octubre, 15:30" readonly /></div>
+            </div>
+            <div class="field"><label>Destinatarios</label><div class="select">Seleccionar cursos o grupos <span>⌄</span></div></div>
+            <div class="field"><label>Asunto del correo</label><input value="Inscripción a campeonato de atletismo" readonly /></div>
+            <div class="field"><label>Mensaje</label><div class="textarea">Estimada comunidad: les invitamos a participar en el campeonato de atletismo del colegio. En este aviso encontrarás los detalles de la actividad y la información necesaria para inscribirte.</div></div>
+            <div class="checks">
+              <div class="check-left"><span class="checkbox">✓</span><div><strong>Esta actividad requiere pago</strong><small>Se incluirán las instrucciones de pago en el correo.</small></div></div>
+              <span class="cc">Tesorería irá en copia</span>
+            </div>
+            <div class="actions"><span class="quiet">Remitente: notificaciones@csfr.cl</span><div class="buttons"><button>Guardar borrador</button><button class="send">Revisar y enviar&nbsp; →</button></div></div>
+          </section>
+          <section class="panel preview">
+            <div class="panel-head"><h2>Vista previa del correo</h2><span class="quiet">Familias</span></div>
+            <p class="preview-label">Destinatarios seleccionados</p>
+            <div class="recipient-list"><span class="tag">7.º básico</span><span class="tag">8.º básico</span><span class="tag">Atletismo</span></div>
+            <p class="preview-label">Asunto</p>
+            <div class="subject">Inscripción a campeonato de atletismo</div>
+            <div class="mail">
+              <div class="mail-brand"><div class="mail-mark">Sf</div><div><strong>Colegio Sagrada Familia</strong><small>Comunicaciones institucionales</small></div></div>
+              <h3>Campeonato de atletismo</h3>
+              <p>Estimada comunidad:</p>
+              <p>Les invitamos a participar en el campeonato de atletismo del colegio. Será una instancia para compartir y representar a nuestra comunidad.</p>
+              <div class="event-info"><strong>Fecha:</strong> viernes 24 de octubre, 15:30<br><strong>Lugar:</strong> gimnasio del colegio<br><strong>Inscripción:</strong> hasta el miércoles 22</div>
+              <p>Para confirmar la participación, responde este mensaje o contacta a la coordinación deportiva.</p>
+              <div class="sender">Colegio Sagrada Familia · Reñaca</div>
+            </div>
+          </section>
+        </div>
+        <section class="panel recent">
+          <div class="recent-head"><h2>Actividad reciente</h2><a href="#">Ver historial completo&nbsp; →</a></div>
+          <table>
+            <thead><tr><th>Asunto</th><th>Destinatarios</th><th>Enviado por</th><th>Fecha</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Reunión informativa de 8.º básico</strong></td><td>8.º básico · Familias</td><td>Secretaría</td><td>14 oct, 10:42</td><td><span class="status">Enviado</span></td></tr>
+              <tr><td><strong>Autorización salida pedagógica</strong></td><td>5.º básico · Familias</td><td>Coordinación</td><td>11 oct, 13:18</td><td><span class="status">Enviado</span></td></tr>
+            </tbody>
+          </table>
+        </section>
+        <div class="footer"><span>Propuesta conceptual de interfaz · Notificaciones CSFR</span><span>Privacidad &nbsp;·&nbsp; Ayuda</span></div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

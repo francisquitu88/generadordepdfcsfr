@@ -30,12 +30,13 @@ Este documento conserva un registro amplio del trabajo realizado y las decisione
 
 ## 3. Propuesta de notificaciones e intranet
 
-- Se creó un documento separado, sin repetir logo, autor ni fecha del informe principal y sin incluir los valores monetarios del texto inicial.
-- El primer bloque describe un sistema de notificaciones por correo para campeonatos, actividades extraprogramáticas y otras instancias. Incluye, en términos funcionales, gestión de usuarios autorizados, destinatarios, actividades con o sin pago, copia a Tesorería cuando corresponda e historial de envíos. También diferencia las opciones de personalización y seguimiento sin presentar precios.
-- El segundo bloque se tituló “Mejoras a la intranet del colegio” para describir mejor el alcance:
-  - Sección para cargar, organizar y consultar documentos institucionales, con permisos para usuarios autorizados.
-  - Conversación continua entre docente y administración dentro de un ticket, con historial de mensajes.
-  - Propuesta de cambiar el enlace actual `intranetcsfr.onrender.com` por `intranet.csfr.cl`, sujeto a configuración y aprobación.
+- Se creó un documento separado, sin repetir logo, autor ni fecha del informe principal y sin incluir los valores monetarios del texto inicial. Sus secciones distinguen el sistema de notificaciones por correo de las mejoras a la intranet:
+  - Sistema de notificaciones por correo, solicitado por Mauricio Arias (gerente de Administración y Finanzas), para campeonatos, actividades extraprogramáticas y otras instancias. Incluye gestión de usuarios autorizados, destinatarios, actividades con o sin pago, copia a Tesorería cuando corresponda e historial de envíos, sin presentar precios. Se proponen `notificaciones@csfr.cl` como correo y `notificaciones.csfr.cl` como página del sistema.
+  - Mejoras a la intranet separadas por solicitante: Carolina Sheward, rectora, solicita una biblioteca de documentos institucionales; Diego Pérez, del área de TI, solicita actualizar la ticketera para mantener la conversación e historial de cada solicitud.
+  - Al final del documento, Tourify propone mejorar el acceso de `intranetcsfr.onrender.com` mediante `intranet.csfr.cl`, sujeto a configuración y aprobación.
+- Se eliminaron los dos textos de “Resultado esperado” para que la presentación sea directa.
+- Se aclaró que el colegio ya cuenta con el dominio `csfr.cl`: no es necesario comprar ni pagar por un dominio nuevo, aunque el correo y los subdominios deben configurarse.
+- Se quitó el párrafo sobre opciones de personalización y seguimiento del sistema de notificaciones.
 - El documento quedó disponible en HTML y PDF.
 
 ## 4. Archivos preparados para publicación

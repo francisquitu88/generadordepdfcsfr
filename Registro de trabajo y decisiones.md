@@ -16,9 +16,13 @@ Este documento resume el trabajo realizado en esta conversación para dejar cons
 
 ## Propuesta de notificaciones e intranet
 
-- Se preparó un documento independiente, sin logo, autor ni fecha, organizado en dos líneas de trabajo:
-  1. Sistema de notificaciones por correo para campeonatos, actividades extraprogramáticas y otras instancias, con gestión de usuarios, destinatarios, copia a Tesorería cuando corresponda y registro de envíos.
-  2. Mejoras a la intranet institucional: biblioteca de documentos, conversación de seguimiento entre administración y docentes dentro de tickets y propuesta de acceso por `intranet.csfr.cl`.
+- Se preparó un documento independiente, sin logo ni fecha, con secciones diferenciadas para las notificaciones por correo y las mejoras a la intranet:
+  1. Sistema de notificaciones por correo, solicitado por Mauricio Arias (gerente de Administración y Finanzas), para campeonatos, actividades extraprogramáticas y otras instancias. Incluye gestión de usuarios, destinatarios, copia a Tesorería cuando corresponda y registro de envíos. Se propone el correo `notificaciones@csfr.cl` y la página `notificaciones.csfr.cl`.
+  2. Mejoras a la intranet, organizadas por solicitante: Carolina Sheward, rectora, solicita una biblioteca de documentos institucionales; Diego Pérez, del área de TI, solicita actualizar la ticketera para permitir seguimiento y conversación dentro de cada ticket. Al final, Tourify propone mejorar el acceso a la intranet mediante `intranet.csfr.cl`.
+- Se eliminaron los dos textos de “Resultado esperado” para mantener la propuesta simple y directa.
+- Se aclaró que `csfr.cl` ya es un dominio del colegio, por lo que no es necesario comprar ni pagar por un dominio nuevo; el correo y los subdominios requieren configuración.
+- Se quitó el párrafo que describía opciones de personalización y seguimiento del sistema de notificaciones.
+- Se preparó una referencia visual conceptual para el sistema de notificaciones, adaptando la estética de la maqueta del asistente a los flujos de creación de avisos, destinatarios, revisión, pagos e historial. La imagen se incorporó como página final del PDF y se conserva su fuente HTML.
 - Se excluyeron los valores monetarios solicitados.
 - Se señaló que el dominio de la intranet depende de contar con acceso y realizar la configuración técnica correspondiente.
 

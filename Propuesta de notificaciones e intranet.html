@@ -56,7 +56,10 @@
     .feature-list li { margin: 0; padding: 8px 0; border-bottom: 1px solid var(--line); }
     .feature-list strong { color: var(--navy); }
     .feature-list span { color: var(--muted); }
-    .page-two { break-before: page; page-break-before: always; }
+    .page-two, .page-three { break-before: page; page-break-before: always; }
+    .mockup { margin: 18px 0 0; }
+    .mockup img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
+    .mockup figcaption { margin-top: 7px; color: var(--muted); font-size: 11px; }
     .footer { margin-top: 17px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
     @media (max-width: 700px) {
       main { margin: 0; padding: 30px 22px; }
@@ -84,55 +87,60 @@
   <main>
     <header>
       <p class="eyebrow">Propuesta institucional</p>
-      <h1>Notificaciones por correo y mejoras a la intranet</h1>
-      <p class="subtitle">Dos líneas de trabajo para facilitar las comunicaciones y el acceso a herramientas y documentos del colegio.</p>
+      <h1>Sistema de Notificaciones por correo</h1>
+      <p class="subtitle">Propuesta para el sistema de avisos institucionales.</p>
       <div class="rule"></div>
     </header>
 
     <section>
-      <h2>1. Sistema de notificaciones por correo</h2>
+      <h2>Detalles de la propuesta</h2>
+      <p><strong>Solicitud de Mauricio Arias, gerente de Administración y Finanzas.</strong></p>
       <p>Se propone incorporar un sistema para preparar y enviar correos relacionados con campeonatos deportivos, actividades extraprogramáticas y otras instancias del colegio. El equipo autorizado podría administrar los destinatarios y mantener un registro de las comunicaciones enviadas.</p>
+      <p>Como dirección de envío se propone <strong>notificaciones@csfr.cl</strong> y como página del sistema, <strong>notificaciones.csfr.cl</strong>. El colegio ya cuenta con el dominio <strong>csfr.cl</strong>, por lo que no es necesario comprar ni pagar por un dominio nuevo; solo se requiere configurar el correo y la página.</p>
 
       <h3>¿Qué permitiría hacer?</h3>
       <ul class="feature-list">
-        <li><strong>Enviar avisos de actividades.</strong> <span>Crear y distribuir correos a los grupos de destinatarios correspondientes.</span></li>
-        <li><strong>Gestionar quién puede enviar.</strong> <span>Definir usuarios autorizados para preparar o enviar notificaciones.</span></li>
-        <li><strong>Indicar si una actividad tiene pago.</strong> <span>Configurar actividades con o sin cobro; cuando corresponda un pago, incluir automáticamente a Tesorería en la copia del correo.</span></li>
-        <li><strong>Consultar el historial.</strong> <span>Revisar qué notificaciones se enviaron y contar con una trazabilidad básica o ampliada, según las necesidades del colegio.</span></li>
-        <li><strong>Usar la imagen institucional.</strong> <span>Como opción, enviar desde un correo institucional y personalizar el diseño de los mensajes con la identidad del colegio.</span></li>
+        <li><strong>Enviar avisos de actividades.</strong> <span>Preparar comunicaciones para campeonatos deportivos, actividades extraprogramáticas, reuniones y otras instancias. El remitente podría seleccionar los grupos correspondientes, revisar el mensaje antes de enviarlo y comunicar con claridad los datos relevantes de cada actividad.</span></li>
+        <li><strong>Gestionar quién puede enviar.</strong> <span>Asignar acceso únicamente a las personas autorizadas y definir quiénes pueden preparar, revisar o enviar mensajes. Esto ayudaría a mantener un uso ordenado del sistema y a evitar envíos no autorizados.</span></li>
+        <li><strong>Indicar si una actividad tiene pago.</strong> <span>Registrar si la actividad es gratuita o requiere pago e incluir en el mensaje las instrucciones necesarias para las familias. Cuando corresponda un cobro, el sistema podría agregar automáticamente a Tesorería en copia para facilitar la coordinación financiera.</span></li>
+        <li><strong>Consultar el historial.</strong> <span>Mantener un registro de las comunicaciones enviadas, con información como la fecha, el responsable, el asunto y los grupos destinatarios. Así se podría revisar qué se comunicó y consultar los antecedentes de cada envío.</span></li>
+        <li><strong>Usar la imagen institucional.</strong> <span>Enviar desde la dirección institucional propuesta y utilizar formatos de mensaje coherentes con la identidad del colegio. Las plantillas podrían incluir elementos visuales institucionales para que los avisos sean reconocibles y consistentes.</span></li>
       </ul>
 
-      <p>El alcance puede configurarse según el nivel de personalización y seguimiento que el colegio necesite. La opción más completa podría incluir automatizaciones adicionales, mejor administración de destinatarios y herramientas de seguimiento de notificaciones.</p>
-      <div class="summary"><strong>Resultado esperado:</strong> centralizar estos avisos, facilitar su envío a las personas correspondientes y disponer de un historial para consultar las comunicaciones.</div>
+    </section>
+
+    <section class="page-three">
+      <p class="eyebrow">Referencia visual</p>
+      <h1>Interfaz propuesta para notificaciones</h1>
+      <p class="subtitle">Una posible vista de trabajo para preparar avisos institucionales, revisar su contenido y consultar los envíos recientes.</p>
+      <div class="rule"></div>
+      <figure class="mockup">
+        <img src="Propuesta visual notificaciones csfr.cl.png" alt="Interfaz conceptual del sistema de notificaciones del Colegio Sagrada Familia" />
+        <figcaption>Propuesta conceptual de interfaz. La imagen representa una posible organización visual y no corresponde a un sistema implementado.</figcaption>
+      </figure>
     </section>
 
     <section class="page-two">
       <p class="eyebrow">Plataforma institucional</p>
       <h1>Mejoras a la intranet del colegio</h1>
-      <p class="subtitle">Ampliar la intranet actual con documentos institucionales y una comunicación más completa entre docentes y administración.</p>
+      <p class="subtitle">Solicitudes de actualización y propuesta de acceso institucional.</p>
       <div class="rule"></div>
 
-      <p>Se propone mejorar la intranet que actualmente está disponible en <strong>intranetcsfr.onrender.com</strong>. La idea es sumar herramientas de uso cotidiano y ofrecer un acceso más sencillo mediante el dominio institucional <strong>intranet.csfr.cl</strong>, sujeto a la configuración y aprobación correspondientes.</p>
-
-      <h2>Funciones propuestas</h2>
-      <ul class="feature-list">
-        <li><strong>Biblioteca de documentos institucionales.</strong> <span>Habilitar una sección para que personal autorizado pueda cargar y organizar documentos del colegio, y para que los usuarios autorizados puedan consultarlos.</span></li>
-        <li><strong>Seguimiento de tickets.</strong> <span>Permitir que un docente y administración continúen conversando dentro de un mismo ticket, agreguen información y consulten el historial sin perder el contexto de la solicitud.</span></li>
-        <li><strong>Acceso con dominio institucional.</strong> <span>Proponer el cambio del enlace actual a intranet.csfr.cl, para que la intranet sea más fácil de recordar y esté vinculada a la dirección del colegio.</span></li>
-      </ul>
-
-      <h3>Uso esperado de los tickets</h3>
-      <p>El docente crea una solicitud y administración puede responder en ese mismo espacio. Ambas partes pueden añadir mensajes y revisar la conversación previa, facilitando el seguimiento hasta resolver la solicitud.</p>
-
-      <h3>Administración de documentos</h3>
+      <h2>Solicitud de Carolina Sheward, rectora</h2>
+      <h3>Biblioteca de documentos institucionales</h3>
+      <p>Habilitar una sección para que personal autorizado pueda cargar y organizar documentos del colegio, y para que los usuarios autorizados puedan consultarlos.</p>
       <p>La sección de documentos permitiría reunir archivos institucionales en un lugar común. Antes de habilitarla, se deben acordar quiénes podrán cargar, actualizar y consultar documentos, además de cómo se organizarán las versiones vigentes.</p>
 
-      <div class="summary"><strong>Resultado esperado:</strong> que la intranet no sea solo un punto de acceso, sino también un espacio para encontrar documentos institucionales y dar seguimiento claro a solicitudes internas.</div>
+      <h2>Solicitud de Diego Pérez, del área de TI</h2>
+      <h3>Actualización de la ticketera</h3>
+      <p>Permitir que un docente y administración continúen conversando dentro de un mismo ticket, agreguen información y consulten el historial sin perder el contexto de la solicitud.</p>
+      <p>El docente crea una solicitud y administración puede responder en ese mismo espacio. Ambas partes pueden añadir mensajes y revisar la conversación previa, facilitando el seguimiento hasta resolverla.</p>
 
-      <footer class="footer">
-        <p>Las funcionalidades descritas son una propuesta de alcance para revisión del colegio. La disponibilidad del dominio intranet.csfr.cl depende de contar con acceso y realizar la configuración técnica correspondiente.</p>
-      </footer>
+      <h2>Propuesta de Tourify</h2>
+      <p>Desde Tourify proponemos mejorar la intranet, actualmente disponible en <strong>intranetcsfr.onrender.com</strong>, incorporando herramientas de uso cotidiano y ofreciendo un acceso más sencillo mediante el dominio institucional <strong>intranet.csfr.cl</strong>.</p>
+      <p>El colegio ya cuenta con el dominio <strong>csfr.cl</strong>, por lo que no es necesario comprar ni pagar por un dominio nuevo. La habilitación de <strong>intranet.csfr.cl</strong> queda sujeta a la configuración técnica y aprobación correspondientes.</p>
     </section>
+
   </main>
 </body>
 </html>
