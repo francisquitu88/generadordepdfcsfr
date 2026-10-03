@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informe de evaluación digital | Colegio Capellán Pascal</title>
+  <style>
+    :root {
+      --navy: #17324d;
+      --blue: #27678a;
+      --teal: #25847b;
+      --ink: #263746;
+      --muted: #5e6e7b;
+      --line: #dce5eb;
+      --pale: #f2f7fa;
+      --gold: #f2b544;
+      --red: #a6413d;
+      --red-pale: #fbf0ef;
+      --green: #26705d;
+      --green-pale: #eff7f3;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: #edf2f5; font: 14px/1.48 "Segoe UI", Arial, sans-serif; }
+    main { max-width: 920px; margin: 28px auto; padding: 46px 62px; background: #fff; box-shadow: 0 8px 32px rgba(23,50,77,.10); }
+    .cover { min-height: 740px; padding: 34px 0 24px; display: flex; flex-direction: column; break-after: page; page-break-after: always; }
+    .cover-branding { display: grid; grid-template-columns: minmax(0,1fr) 54px minmax(0,1fr); align-items: center; gap: 24px; }
+    .cover-logo { display: block; width: 100%; height: 180px; object-fit: contain; }
+    .cover-cross { color: var(--teal); font-size: 42px; font-weight: 400; text-align: center; }
+    .cover-content { margin: auto 0; padding: 52px 0; }
+    .cover h1 { max-width: 730px; font-size: 38px; }
+    .cover-rule { width: 64px; height: 4px; margin: 20px 0; background: var(--gold); }
+    .cover-collaboration { color: var(--muted); font-size: 14px; }
+    .cover-meta { padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .eyebrow { margin: 0 0 8px; color: var(--teal); font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    h1,h2,h3 { color: var(--navy); line-height: 1.22; }
+    h1 { max-width: 680px; margin: 0; font-size: 31px; }
+    h2 { margin: 22px 0 8px; padding-bottom: 6px; border-bottom: 1px solid var(--line); font-size: 19px; }
+    h3 { margin: 14px 0 4px; font-size: 14px; }
+    p { margin: 5px 0 8px; }
+    .subtitle { max-width: 680px; margin: 9px 0 0; color: var(--muted); font-size: 15px; }
+    .rule { width: 48px; height: 3px; margin: 13px 0; background: var(--gold); }
+    .meta { color: var(--muted); font-size: 10px; }
+    .summary { margin: 12px 0; padding: 10px 13px; border-left: 3px solid var(--teal); background: var(--pale); }
+    ul { margin: 5px 0 9px; padding-left: 19px; }
+    li { margin: 3px 0; }
+    .keyline { color: var(--blue); font-weight: 700; }
+    .finding { margin: 9px 0; padding: 9px 12px; border-left: 3px solid var(--blue); background: var(--pale); break-inside: avoid; }
+    .finding strong { color: var(--navy); }
+    .positive { margin: 9px 0; padding: 9px 12px; border-left: 3px solid var(--green); background: var(--green-pale); }
+    .source { color: var(--muted); font-size: 10px; }
+    .evidence-figure { margin: 10px auto 14px; break-inside: avoid; text-align: center; }
+    .evidence-image { display: block; max-width: 100%; max-height: 115mm; width: auto; height: auto; margin: 0 auto; border: 1px solid var(--line); object-fit: contain; }
+    .evidence-caption { margin-top: 4px; color: var(--muted); font-size: 10px; text-align: left; }
+    a { color: var(--blue); overflow-wrap: anywhere; }
+    .proposal,.section-page { break-before: page; page-break-before: always; }
+    .footer { margin-top: 16px; padding-top: 8px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
+    .small { font-size: 11px; color: var(--muted); }
+    @media (max-width: 700px) {
+      main { margin: 0; padding: 30px 22px; }
+      h1 { font-size: 27px; }
+      .cover { min-height: 100vh; padding: 28px 0; }
+      .cover-branding { grid-template-columns: minmax(0,1fr) 34px minmax(0,1fr); gap: 12px; }
+      .cover-logo { height: 110px; }
+      .cover-cross { font-size: 32px; }
+      .cover h1 { font-size: 29px; }
+    }
+    @media print {
+      @page { size: A4; margin: 14mm 16mm; }
+      body { background: #fff; font-size: 9.5pt; line-height: 1.38; }
+      main { max-width: none; margin: 0; padding: 0; box-shadow: none; }
+      .cover { min-height: 250mm; padding: 10mm 0 8mm; }
+      .cover-branding { grid-template-columns: minmax(0,1fr) 18mm minmax(0,1fr); gap: 10mm; }
+      .cover-logo { height: 48mm; }
+      .cover-cross { font-size: 34pt; }
+      .cover-content { padding: 30mm 0; }
+      .cover h1 { font-size: 28pt; }
+      .cover-meta { font-size: 9pt; }
+      h1 { font-size: 24pt; }
+      h2 { margin-top: 16px; font-size: 15pt; }
+      h3 { margin-top: 10px; font-size: 10.5pt; }
+      p { margin: 4px 0 6px; }
+      .subtitle { font-size: 11pt; }
+      .rule { margin: 9px 0; }
+      .summary,.finding,.positive { margin: 7px 0; padding: 7px 10px; }
+      li { margin: 2px 0; }
+      .proposal,.section-page { break-before: page; page-break-before: always; }
+      .cover { break-after: page; page-break-after: always; }
+      a { color: inherit; text-decoration: none; }
+      .footer { margin-top: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="cover">
+      <div class="cover-branding" aria-label="Trabajo conjunto entre Colegio Capellán Pascal y Tourify">
+        <img class="cover-logo" src="https://colegiocapellanpascal.cl/wp-content/uploads/2025/03/logo-para-pagina-web_Mesa-de-trabajo-1.webp" alt="Logo del Colegio Capellán Pascal">
+        <div class="cover-cross" aria-hidden="true">×</div>
+        <img class="cover-logo" src="logo-institucional.jpg" alt="Logo de Tourify">
+      </div>
+      <div class="cover-content">
+        <p class="eyebrow">Informe de evaluación digital</p>
+        <h1>Sitio web Colegio Capellán Pascal</h1>
+        <p class="subtitle">Experiencia, contenido, calendario y presencia móvil.</p>
+        <div class="cover-rule"></div>
+        <p class="cover-collaboration">Una revisión para proyectar una experiencia digital a la altura de su comunidad.</p>
+      </div>
+      <footer class="cover-meta">
+        <p>Elaborado por Francisco Sotomayor · CTO de Tourify.cl</p>
+        <p>colegiocapellanpascal.cl · 3 de octubre de 2026</p>
+      </footer>
+    </section>
+
+    <section>
+      <h2>Conclusión ejecutiva</h2>
+      <p>La versión pública revisada no está a la altura de una experiencia institucional actual: el hero no carga de forma confiable, la navegación móvil tapa contenido, las fechas del calendario se reducen a marcadores sin título y los eventos abren páginas vacías. Equipo Académico aparece con las cabezas cortadas, las noticias quedan relegadas y la galería pierde espacio y continuidad. No son ajustes aislados: la experiencia móvil y el flujo de información requieren una nueva implementación.</p>
+      <div class="summary"><strong>Conclusión ejecutiva:</strong> los problemas observados atraviesan la navegación, la carga de medios, el calendario y la presentación del contenido. Se recomienda una nueva implementación integral, con especial atención a la experiencia móvil y a la continuidad de las tareas principales.</div>
+
+      <h3>Principales hallazgos</h3>
+      <ul>
+        <li><strong>Portada:</strong> reproducción de YouTube invasiva y sin alternativa fiable cuando no carga.</li>
+        <li><strong>Navegación móvil:</strong> accesos fijos cubren secciones y dificultan la lectura.</li>
+        <li><strong>Calendario:</strong> marcadores sin título y eventos que conducen a fichas vacías o con imágenes incongruentes.</li>
+        <li><strong>Contenido:</strong> noticias relegadas, retratos mal encuadrados y una galería con espacio desaprovechado.</li>
+        <li><strong>SEO público:</strong> página de muestra indexable y metadatos sociales incompletos.</li>
+      </ul>
+
+      <p class="source">Alcance: inspección de páginas y recursos accesibles públicamente; revisión visual de escritorio y móvil; lectura de metadatos, encabezados, sitemap y robots.txt. No se accedió a cuentas privadas ni a Search Console, analítica del colegio, CMS o datos de estudiantes.</p>
+    </section>
+
+    <section class="proposal">
+      <p class="eyebrow">01 · Portada y experiencia</p>
+      <h1>La portada requiere una nueva implementación</h1>
+      <p class="subtitle">El video condiciona la primera impresión, muestra elementos externos al diseño y no ofrece una alternativa consistente cuando no carga.</p>
+      <div class="rule"></div>
+
+      <div class="finding"><strong>El reproductor de video domina la portada.</strong> La captura muestra pausa, “Más videos” y subtítulos automáticos de YouTube sobre el video. Estos controles pertenecen al reproductor externo y compiten con la identidad del colegio. En móvil, la portada puede quedar sin contenido visible y sin una alternativa útil.</div>
+      <figure class="evidence-figure">
+        <img class="evidence-image" src="capturas%20mias/PC%20portada%20donde%20se%20ve%20signo%20pause%20y%20subtitulos.jpeg" alt="Captura PC de la portada: video del colegio con botón de pausa y subtítulos automáticos visibles">
+        <figcaption class="evidence-caption">Captura original del solicitante, escritorio: el control de pausa y los subtítulos de YouTube aparecen sobre el video institucional.</figcaption>
+      </figure>
+      <p>El reproductor se inicia al abrir la portada y solicita recursos de YouTube antes de que la persona decida reproducirlo. No se midió el peso total de descarga; el problema comprobado aquí es la dependencia inmediata del reproductor, su presentación invasiva y la ausencia de una alternativa útil cuando no carga.</p>
+      <figure class="evidence-figure">
+        <img class="evidence-image" src="capturas%20mias/celular%20Portada%20principal%20sin%20cargar.jpg" alt="Captura original de la portada en celular con el área principal del sitio en blanco mientras carga">
+        <figcaption class="evidence-caption">Captura original del solicitante, celular: la portada queda sin contenido visible y la navegación sigue ocupando gran parte de la pantalla.</figcaption>
+      </figure>
+
+      <h3>Enfoque recomendado para la portada</h3>
+      <ul>
+        <li>Usar una portada visual optimizada, una frase clara y un botón visible a «Admisión 2027» o «Solicitar información».</li>
+        <li>Eliminar el autoplay. Si se conserva video, iniciarlo solo por acción explícita, con miniatura ligera y controles que no cubran el mensaje.</li>
+        <li>Revisar los subtítulos manualmente y ofrecer transcripción; evitar recomendaciones externas al finalizar.</li>
+        <li>Probar carga y reproducción en teléfonos y redes móviles antes de publicar.</li>
+      </ul>
+
+      <div class="finding"><strong>La navegación móvil se superpone al contenido.</strong> Los accesos a Schoolnet, Tour Virtual, Catálogo Biblioteca, Admisión y campañas se apilan en bloques grandes y permanecen sobre la página durante el desplazamiento. Esto cubre textos, el calendario y la sección de valores; algunos elementos de la cabecera también quedan recortados.</div>
+      <h3>Reorganización de la navegación</h3>
+      <p>La cabecera debe ocupar una franja compacta y dejar de superponerse al contenido. En móvil, mostrar logo, botón de menú y un acceso prioritario; mover pagos, Schoolnet, tour y biblioteca a una sección secundaria. Los botones de campaña deben ordenarse por importancia y no quedar fijos sobre el calendario o los valores.</p>
+
+      <h3>Contenido de portada</h3>
+      <p>El encabezado principal «Estimada comunidad» trata la portada como un comunicado dirigido a una comunidad que ya conoce el colegio, no como la entrada para una familia que busca información por primera vez. El calendario aparece bajo una franja amplia de accesos flotantes: el mes y los días quedan parcialmente cubiertos y pierden contraste. En «Nuestros valores escolares», el mismo elemento fijo tapa títulos y contenido visual; las tarjetas dejan de leerse con continuidad.</p>
+      <figure class="evidence-figure">
+        <img class="evidence-image" src="capturas%20mias/celular%20secc%20nuestros%20valores%20mas%20optimizada%20dificil%20interaccion.jpg" alt="Captura original de Nuestros valores escolares en celular con la navegación superpuesta a los títulos y la imagen">
+        <figcaption class="evidence-caption">Captura original del solicitante, celular: la navegación invade «Nuestros valores escolares» y dificulta recorrer el contenido.</figcaption>
+      </figure>
+      <h3>Los eventos del calendario llevan a una ficha vacía</h3>
+      <div class="finding"><strong>El evento del 30 de octubre abre una ficha sin información.</strong> La tarjeta enlaza a <code>/calendario/viaje-de-estudios-ii-medios-7/</code>. La página muestra la fecha y el mensaje “No data was found”, pero no entrega detalles de la actividad. El flujo se interrumpe al abrir el evento.</div>
+      <figure class="evidence-figure">
+        <img class="evidence-image" src="capturas%20mias/pc%20apretamos%20ese%20icono%20de%20calendario%20y%20aparece%20NO%20DATA%20WAS%20FOUND.png" alt="Captura original de la ficha de calendario en PC que muestra No data was found">
+        <figcaption class="evidence-caption">Captura original del solicitante: al abrir la actividad desde calendario, la ficha termina en «No data was found».</figcaption>
+      </figure>
+      <div class="finding"><strong>El evento carece de identificación en la vista móvil.</strong> La captura muestra el día 30 con un marcador azul pequeño y sin título visible. En escritorio, la tarjeta combina una imagen “Jeans Day” con el título “Viaje de Estudios II medios”, por lo que imagen y actividad no parecen corresponder.</div>
+      <figure class="evidence-figure">
+        <img class="evidence-image" src="capturas%20mias/celular%20Calendario%20sin%20verse%20titulo%20de%20las%20fechas%20(solo%20se%20ve%20un%20cuadrito%20diminuto%20azul).jpg" alt="Captura original en celular del calendario, donde la actividad solo aparece como un pequeño marcador azul">
+        <figcaption class="evidence-caption">Captura original del solicitante, celular: el evento del día señalado se reduce a un cuadro azul sin título visible.</figcaption>
+      </figure>
+      <figure class="evidence-figure">
+        <img class="evidence-image" src="capturas%20mias/Pc%20Calendario%20icono%20de%20titulo%20de%20noticia.png" alt="Captura original en PC de la tarjeta de calendario que muestra una imagen Jeans Day junto al título Viaje de Estudios II medios">
+        <figcaption class="evidence-caption">Captura original del solicitante, PC: la imagen «Jeans Day» no corresponde al título «Viaje de Estudios II medios».</figcaption>
+      </figure>
+      <p>En el calendario móvil, mostrar al menos el nombre abreviado del evento y ofrecer una tarjeta legible al tocarlo. La imagen, el título, la fecha y el destino deben corresponder al mismo evento; la ficha no puede publicarse mientras carezca de contenido.</p>
+      <p class="source">Evidencia: portada y sección de calendario capturadas durante esta revisión; capturas móviles adicionales entregadas por el solicitante muestran la superposición sobre «Nuestros valores escolares». Las capturas son estados puntuales del sitio; el problema de superposición visual sí es directamente observable.</p>
+    </section>
+
+    <section class="section-page">
+      <p class="eyebrow">02 · Otras secciones en móvil</p>
+      <h1>Otras secciones requieren ajustes de presentación</h1>
+      <p class="subtitle">La barra fija no se adapta al contenido: cubre acciones en Admisión, imágenes en Equipo Académico y módulos completos en la portada.</p>
+      <div class="rule"></div>
+
+      <h3>Admisión 2027 no orienta el siguiente paso</h3>
+      <div class="finding"><strong>La acción principal de Admisión no se distingue con claridad.</strong> «Comunicado de admisión» aparece como una franja gris, sin una señal visual clara de que se puede pulsar. La navegación fija cruza el encabezado y cubre parte del contenido.</div>
+
+      <h3>Equipo Académico muestra el retrato recortado</h3>
+      <div class="finding"><strong>El encuadre de Equipo Académico recorta a las personas.</strong> En móvil, la fotografía corta las cabezas y el título «Equipo Académico» se superpone a la imagen. La navegación fija cubre además una parte de la fotografía.</div>
+      <figure class="evidence-figure">
+        <img class="evidence-image" src="capturas%20mias/celular%20Foto%20corta%20cabezas%20de%20Equipo%20academico.jpg" alt="Captura original de Equipo Académico en celular con el encuadre de la fotografía cortando las cabezas">
+        <figcaption class="evidence-caption">Captura original del solicitante, celular: el recorte corta las cabezas del equipo y la barra fija tapa parte de la página.</figcaption>
+      </figure>
+
+      <h3>Noticias relegadas y cortadas en la portada</h3>
+      <div class="finding"><strong>Las noticias quedan relegadas y su acceso no es evidente.</strong> La sección aparece bajo el título genérico «Blog». En móvil, el filtro de categorías y las tarjetas compiten por el ancho; algunos titulares quedan cortados y cuesta revisar las publicaciones.</div>
+      <figure class="evidence-figure">
+        <img class="evidence-image" src="capturas%20mias/cELULAR%20Seccion%20de%20noticias%20sin%20titulo%20de%20NOTICIAS%20llega%20y%20empieza%20sigue%20solapandose%20con%20navbar.jpg" alt="Captura original de la sección de noticias en celular, sin encabezado Noticias y con contenido bajo la barra fija">
+        <figcaption class="evidence-caption">Captura original del solicitante, celular: las noticias empiezan sin un título claro y siguen solapándose con la navegación.</figcaption>
+      </figure>
+
+      <h3>Galería pequeña y separada del pie de página</h3>
+      <div class="finding"><strong>La galería ocupa poco espacio y queda separada del pie de página.</strong> En móvil, el encabezado aparece cortado, el módulo visual queda reducido y se observa un espacio vacío considerable antes del pie.</div>
+      <p class="source">Evidencia: capturas del sitio en ancho móvil de 390 px, junto con las imágenes aportadas por el solicitante. Los problemas de recorte y superposición corresponden a los estados observados durante la revisión.</p>
+    </section>
+
+    <section class="section-page">
+      <p class="eyebrow">03 · SEO técnico y contenido público</p>
+      <h1>SEO: señales públicas sin control editorial suficiente</h1>
+      <p class="subtitle">La configuración técnica no compensa páginas de prueba indexables ni metadatos sociales incompletos.</p>
+      <div class="rule"></div>
+
+      <h3>Metadatos de portada</h3>
+      <ul>
+        <li><strong>Title:</strong> «Colegio Capellán Pascal, Dios Patria y Familia». Identifica el colegio; se puede priorizar también la ubicación y una frase de búsqueda con intención, como Viña del Mar o admisión.</li>
+        <li><strong>Description:</strong> “Colegio Católico al servicio de la familia naval, Excelencia científico-humanista y formación en valores para desarrollar líderes responsables en la sociedad”. Resume la propuesta, aunque es larga y no incluye ubicación ni acción concreta.</li>
+        <li><strong>Canonical:</strong> presente y apunta a la portada HTTPS.</li>
+        <li><strong>Open Graph/Twitter:</strong> hay título y descripción, pero no se detectó <code>og:image</code> ni <code>twitter:image</code>. Los enlaces compartidos pueden aparecer sin una imagen institucional controlada.</li>
+        <li><strong>Idioma:</strong> HTML declara <code>lang="es"</code>; Open Graph usa <code>es_ES</code>. Evaluar <code>es_CL</code> para alinear idioma y audiencia local.</li>
+      </ul>
+
+      <h3>Rastreo e indexación</h3>
+      <p><strong>Estado técnico observado:</strong> <a href="https://colegiocapellanpascal.cl/robots.txt">robots.txt</a> permite el rastreo general y declara el sitemap; <a href="https://colegiocapellanpascal.cl/sitemap_index.xml">el índice XML</a> publica ocho mapas generados por Rank Math. La portada incluye canonical y datos estructurados School/Organization. Estos elementos deben mantenerse durante el cambio de proveedor, pero no corrigen los problemas editoriales descritos a continuación.</p>
+      <div class="finding"><strong>El sitemap incluye una página de muestra de WordPress.</strong> <a href="https://colegiocapellanpascal.cl/sample-page/">/sample-page/</a> contiene texto de ejemplo en inglés y una invitación a entrar a un panel con un dominio ajeno al colegio. Se recomienda retirarla o impedir su indexación.</div>
+      <p>El sitemap registra 47 páginas y 37 entradas. También expone mapas de contenidos auxiliares, como áreas, exalumnos, calendario y publicaciones 3D. Revisar que solo se indexen URLs canónicas, vigentes y con contenido de valor; comprobar duplicados y redirecciones para las rutas de taxonomía.</p>
+
+      <h3>Datos estructurados, analítica y privacidad</h3>
+      <p>Se observó marcado JSON-LD para School/Organization, una buena base para describir la entidad. Validar el conjunto completo con el Rich Results Test y revisar que dirección, logo, URL y perfiles sociales estén vigentes. Durante la visita se detectaron solicitudes de Google Analytics 4 y Meta Pixel; confirmar su finalidad, configuración de consentimiento, aviso de privacidad y política de conservación con el equipo responsable. Esto es una alerta para revisar, no una conclusión legal.</p>
+
+      <h3>Qué falta medir</h3>
+      <p>No se obtuvo acceso a Google Search Console ni a datos de campo. Por eso este documento <strong>no asigna puntajes Lighthouse ni afirma valores de LCP, INP, CLS, tráfico, posiciones, tasa de conversión o tamaño total de descarga</strong>. Medir laboratorio y campo en móvil y escritorio, repetir sin caché y comparar antes/después del cambio del hero.</p>
+      <p class="source">Fuentes: portada, robots.txt, sitemap_index.xml y sitemap de páginas consultados públicamente el 3 de octubre de 2026.</p>
+    </section>
+
+    <section class="section-page">
+      <p class="eyebrow">04 · Plan de mejora</p>
+      <h1>Orden de trabajo recomendado</h1>
+      <p class="subtitle">Cambios de bajo riesgo primero; medición y revisión editorial antes de rediseñar el sitio completo.</p>
+      <div class="rule"></div>
+
+      <h3>Fase 1 · Reemplazar la experiencia actual</h3>
+      <ul>
+        <li>Planificar la transición desde el proveedor actual y rehacer portada, navegación y plantillas móviles como una sola entrega.</li>
+        <li>Reemplazar la implementación del hero por una portada rápida; el video solo debe abrirse cuando la persona lo solicite.</li>
+        <li>Retirar la barra fija de accesos que cubre calendario y contenido; definir una navegación móvil compacta y probada en dispositivos reales.</li>
+        <li>Rehacer el calendario para que el marcador móvil muestre la actividad y cada enlace abra una ficha completa con título, fecha, descripción e imagen coherente.</li>
+      </ul>
+
+      <h3>Fase 2 · SEO y calidad editorial</h3>
+      <ul>
+        <li>Eliminar o desindexar la página /sample-page/ y revisar páginas de prueba/archivadas en los ocho sitemaps.</li>
+        <li>Añadir imagen social de marca con dimensiones y recorte revisados; ajustar el locale a la audiencia chilena.</li>
+      </ul>
+
+      <h3>Fase 3 · Medir y mantener</h3>
+      <ul>
+        <li>Ejecutar Lighthouse/PageSpeed en la home, Admisión y Contacto en móvil y escritorio; revisar Core Web Vitals de campo con Search Console.</li>
+        <li>Revisar semanalmente campañas temporales, listas descargables, calendario, avisos y enlaces externos.</li>
+        <li>Documentar consentimiento y etiquetas de analítica; reducir cargas de terceros hasta que sean necesarias.</li>
+      </ul>
+
+      <div class="summary"><strong>Conclusión:</strong> los problemas observados se distribuyen en varias áreas del sitio y afectan tareas habituales de las familias. Se recomienda evaluar el reemplazo del proveedor actual y solicitar una nueva implementación que asegure una navegación móvil clara, contenidos legibles, medios bajo demanda y medición de rendimiento antes y después del lanzamiento.</div>
+      <footer class="footer">
+        <p><strong>Alcance y cautelas.</strong> Diagnóstico basado en información pública visible el 3 de octubre de 2026, con una revisión puntual en navegador de escritorio y ancho móvil de 390 px. No sustituye una auditoría de seguridad, rendimiento de campo, Search Console, analítica, accesibilidad certificada ni revisión jurídica. Los problemas visuales pueden variar por dispositivo, conexión, consentimiento y estado de carga. Las conclusiones se pueden ampliar con las capturas adicionales que entregue el colegio.</p>
+        <p>Elaborado por Francisco Sotomayor · CTO de Tourify.cl</p>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
