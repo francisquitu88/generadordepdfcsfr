@@ -229,31 +229,24 @@
     </section>
 
     <section class="section-page">
-      <p class="eyebrow">03 · SEO técnico y contenido público</p>
-      <h1>SEO: señales públicas sin control editorial suficiente</h1>
-      <p class="subtitle">La configuración técnica no compensa páginas de prueba indexables ni metadatos sociales incompletos.</p>
+      <p class="eyebrow">03 · Visibilidad y confianza en Google</p>
+      <h1>SEO: riesgos visibles para la confianza del colegio</h1>
+      <p class="subtitle">La prioridad no es hablar de códigos, sino evitar que las familias encuentren páginas incompletas o una presentación poco cuidada.</p>
       <div class="rule"></div>
 
-      <h3>Metadatos de portada</h3>
+      <div class="finding"><strong>Hay una página de muestra que no debería estar visible en Google.</strong> La dirección <a href="https://colegiocapellanpascal.cl/sample-page/">/sample-page/</a> contiene texto de ejemplo en inglés y referencias ajenas al colegio. Esto puede confundir a las familias y debilitar la confianza en la institución. Debe eliminarse o dejar de aparecer en los resultados.</div>
+      <div class="finding"><strong>La presentación del colegio en los enlaces compartidos puede mejorar.</strong> La portada tiene título y descripción, pero no se observó una imagen institucional preparada para compartir en redes sociales. Conviene definir una imagen, un mensaje y una descripción que representen correctamente al colegio.</div>
+      <div class="finding"><strong>La medición y las etiquetas deben revisarse con criterio.</strong> Se detectaron herramientas de medición y publicidad de terceros. Antes de una nueva implementación, conviene confirmar qué se mide, para qué se usa y cómo se informa a las personas, sin convertir este documento en una auditoría legal.</div>
+
+      <h3>Indicadores recomendados para la nueva versión</h3>
+      <p>Se recomienda usar Lighthouse o PageSpeed Insights como una línea base antes y después del rediseño. No se presentan puntajes en este diagnóstico porque todavía no se ha ejecutado una medición controlada. El reporte debería registrar, para la portada, Admisión y Contacto, en móvil y escritorio:</p>
       <ul>
-        <li><strong>Title:</strong> «Colegio Capellán Pascal, Dios Patria y Familia». Identifica el colegio; se puede priorizar también la ubicación y una frase de búsqueda con intención, como Viña del Mar o admisión.</li>
-        <li><strong>Description:</strong> “Colegio Católico al servicio de la familia naval, Excelencia científico-humanista y formación en valores para desarrollar líderes responsables en la sociedad”. Resume la propuesta, aunque es larga y no incluye ubicación ni acción concreta.</li>
-        <li><strong>Canonical:</strong> presente y apunta a la portada HTTPS.</li>
-        <li><strong>Open Graph/Twitter:</strong> hay título y descripción, pero no se detectó <code>og:image</code> ni <code>twitter:image</code>. Los enlaces compartidos pueden aparecer sin una imagen institucional controlada.</li>
-        <li><strong>Idioma:</strong> HTML declara <code>lang="es"</code>; Open Graph usa <code>es_ES</code>. Evaluar <code>es_CL</code> para alinear idioma y audiencia local.</li>
+        <li><strong>Rendimiento:</strong> qué tan rápido aparece el contenido principal.</li>
+        <li><strong>Accesibilidad:</strong> qué tan fácil es usar el sitio para distintas personas.</li>
+        <li><strong>Buenas prácticas:</strong> si la implementación sigue recomendaciones de seguridad y calidad.</li>
+        <li><strong>SEO:</strong> si Google puede entender y mostrar correctamente las páginas.</li>
       </ul>
-
-      <h3>Rastreo e indexación</h3>
-      <p><strong>Estado técnico observado:</strong> <a href="https://colegiocapellanpascal.cl/robots.txt">robots.txt</a> permite el rastreo general y declara el sitemap; <a href="https://colegiocapellanpascal.cl/sitemap_index.xml">el índice XML</a> publica ocho mapas generados por Rank Math. La portada incluye canonical y datos estructurados School/Organization. Estos elementos deben mantenerse durante el cambio de proveedor, pero no corrigen los problemas editoriales descritos a continuación.</p>
-      <div class="finding"><strong>El sitemap incluye una página de muestra de WordPress.</strong> <a href="https://colegiocapellanpascal.cl/sample-page/">/sample-page/</a> contiene texto de ejemplo en inglés y una invitación a entrar a un panel con un dominio ajeno al colegio. Se recomienda retirarla o impedir su indexación.</div>
-      <p>El sitemap registra 47 páginas y 37 entradas. También expone mapas de contenidos auxiliares, como áreas, exalumnos, calendario y publicaciones 3D. Revisar que solo se indexen URLs canónicas, vigentes y con contenido de valor; comprobar duplicados y redirecciones para las rutas de taxonomía.</p>
-
-      <h3>Datos estructurados, analítica y privacidad</h3>
-      <p>Se observó marcado JSON-LD para School/Organization, una buena base para describir la entidad. Validar el conjunto completo con el Rich Results Test y revisar que dirección, logo, URL y perfiles sociales estén vigentes. Durante la visita se detectaron solicitudes de Google Analytics 4 y Meta Pixel; confirmar su finalidad, configuración de consentimiento, aviso de privacidad y política de conservación con el equipo responsable. Esto es una alerta para revisar, no una conclusión legal.</p>
-
-      <h3>Qué falta medir</h3>
-      <p>No se obtuvo acceso a Google Search Console ni a datos de campo. Por eso este documento <strong>no asigna puntajes Lighthouse ni afirma valores de LCP, INP, CLS, tráfico, posiciones, tasa de conversión o tamaño total de descarga</strong>. Medir laboratorio y campo en móvil y escritorio, repetir sin caché y comparar antes/después del cambio del hero.</p>
-      <p class="source">Fuentes: portada, robots.txt, sitemap_index.xml y sitemap de páginas consultados públicamente.</p>
+      <p class="source">Fuentes: portada, robots.txt, sitemap y páginas públicas consultadas durante esta revisión. Lighthouse/PageSpeed debe ejecutarse con fecha, URL y dispositivo documentados.</p>
     </section>
 
     <section class="section-page">
@@ -278,7 +271,7 @@
 
       <h3>Fase 3 · Medir y mantener</h3>
       <ul>
-        <li>Ejecutar Lighthouse/PageSpeed en la home, Admisión y Contacto en móvil y escritorio; revisar Core Web Vitals de campo con Search Console.</li>
+        <li>Medir con Lighthouse o PageSpeed la portada, Admisión y Contacto en móvil y escritorio, y comparar los resultados antes y después del lanzamiento.</li>
         <li>Revisar semanalmente campañas temporales, listas descargables, calendario, avisos y enlaces externos.</li>
         <li>Documentar consentimiento y etiquetas de analítica; reducir cargas de terceros hasta que sean necesarias.</li>
       </ul>
