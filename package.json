@@ -1,0 +1,10 @@
+{
+  "name": "generadordepdfcsfr",
+  "private": true,
+  "scripts": {
+    "generate:diagnostico": "node generate-pdf.js"
+  },
+  "dependencies": {
+    "playwright": "^1.55.0"
+  }
+}
